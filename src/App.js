@@ -1,13 +1,18 @@
 import './App.css';
-import Dashboard from './components/Dashboard';
-import AuthProvider from './contexts/AuthContext';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './pages/Login';
+import NextPage from './pages/NextPage';
+
 
 
 function App() {
   return (
-    <AuthProvider>
-      <Dashboard />
-    </AuthProvider>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/nextpage" component={<NextPage />} />
+      </Routes>
+    </Router>
   );
 }
 

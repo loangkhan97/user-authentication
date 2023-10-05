@@ -1,10 +1,13 @@
 import './App.css';
+import Dashboard from './components/Dashboard';
+import AuthProvider from './contexts/AuthContext';
+
 
 function App() {
   return (
-    <div className="App">
-      Hello world react app
-    </div>
+    <AuthProvider>
+      <Dashboard />
+    </AuthProvider>
   );
 }
 

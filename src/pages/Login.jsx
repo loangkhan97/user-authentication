@@ -12,27 +12,27 @@ const Login = () => {
       console.log('Password:', password);
     };
 
-    const  {
-        authUser,
-        setAuthUser,
-        isLoggedIn,
-        setIsLoggedIn
-    } = useAuth();
+    // const  {
+    //     authUser,
+    //     setAuthUser,
+    //     isLoggedIn,
+    //     setIsLoggedIn
+    // } = useAuth();
 
-    const logIn = (e) => {
-        e.preventDefault()
-        setIsLoggedIn(true)
-        setAuthUser({
-            Name: 'Loang khan',
-            password: 12345
-        })
-    }
+    // const logIn = (e) => {
+    //     e.preventDefault()
+    //     setIsLoggedIn(true)
+    //     setAuthUser({
+    //         Name: 'Loang khan',
+    //         password: 12345
+    //     })
+    // }
 
-    const logOut = (e) => {
-        e.preventDefault()
-        setIsLoggedIn(false)
-        setAuthUser(null)
-    }
+    // const logOut = (e) => {
+    //     e.preventDefault()
+    //     setIsLoggedIn(false)
+    //     setAuthUser(null)
+    // }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -64,7 +64,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button onClick={(e) =>{logIn(e)}}
+        <button
           className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 focus:outline-none"
           onClick={handleLogin}
         >

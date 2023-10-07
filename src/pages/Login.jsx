@@ -1,39 +1,25 @@
-import React, {useState} from 'react'
-import { useAuth } from '../contexts/AuthContext'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+  const [data, setData] = useState({
+    name: '',
+    password: '',
+  });
+
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    if (data.name === 'ali' && data.password === '123') {
+      console.log('Logged in');
+      // Redirect to "NextPage"
+      navigate('/NextPage');
+    } else {
+      console.log('Wrong credentials');
+    }
+  };
   
-    const handleLogin = () => {
-      // Handle login logic here
-      console.log('Username:', username);
-      console.log('Password:', password);
-    };
-
-    // const  {
-    //     authUser,
-    //     setAuthUser,
-    //     isLoggedIn,
-    //     setIsLoggedIn
-    // } = useAuth();
-
-    // const logIn = (e) => {
-    //     e.preventDefault()
-    //     setIsLoggedIn(true)
-    //     setAuthUser({
-    //         Name: 'Loang khan',
-    //         password: 12345
-    //     })
-    // }
-
-    // const logOut = (e) => {
-    //     e.preventDefault()
-    //     setIsLoggedIn(false)
-    //     setAuthUser(null)
-    // }
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-96">
@@ -45,10 +31,13 @@ const Login = () => {
           <input
             type="text"
             id="username"
+            name="name"
             className="w-full p-2 border border-gray-300 rounded focus:outline-none"
             placeholder="Enter your username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={data.name}
+          onChange={(e) => {
+            setData({...data, [e.target.name]: e.target.value})
+          }}
           />
         </div>
         <div className="mb-4">
@@ -58,10 +47,13 @@ const Login = () => {
           <input
             type="password"
             id="password"
+            name="password"
             className="w-full p-2 border border-gray-300 rounded focus:outline-none"
             placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={data.password}
+            onChange={(e) => {
+              setData({...data, [e.target.name]: e.target.value})
+            }}
           />
         </div>
         <button
@@ -74,5 +66,4 @@ const Login = () => {
     </div>
   )
 }
-
-export default Login
+export default Login;
